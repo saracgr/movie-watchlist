@@ -1,0 +1,409 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.light {
+  --bg: rgb(252, 254, 255);
+  --text: rgb(28, 28, 28);
+}
+
+body{
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background: url('https://images.unsplash.com/photo-1630736202148-b8808b69100f?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(0, 0, 0);
+  backdrop-filter: blur(2px)
+
+}
+
+ .hero{
+  display: flex;
+  max-width: 80vw;
+  align-self: center;
+  justify-content: center;
+  margin-top: 25vh;
+}
+
+.hero h1{
+font-size: 2.8em;
+text-align: center;
+padding: 25px;
+color: rgb(255, 255, 255);
+background-color: black;
+border: 5px solid black;
+}
+
+header{
+  background: rgb(5, 4, 4);
+  color: rgb(159, 5, 5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  min-height: 140px;
+  border-bottom: 5px solid black;
+}
+
+nav{
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+h1{
+  font-size: 3.7em;
+  color: white;
+}
+
+nav li{
+  list-style: none;
+  font-size: 1.7em;
+}
+
+li > *{
+  text-decoration: none;
+  color: white;
+}
+
+main{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.userlist-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px 20px 20px 20px;
+}
+
+.search-page{
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.search{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 50px 0 25px 0;
+  color: white;
+}
+
+.search button{
+font-size: 1.6em;
+border-radius: 10px;
+padding: 12px;
+color: white;
+background-color: black;
+}
+
+.search input{
+  border: 2px solid;
+  padding: 20px;
+  margin-right: 10px;
+  height: 30px;
+  min-width: 300px;
+  background-color:black;
+  border: 4px solid rgb(255, 255, 255);
+  font-size: 1.2em;
+  color: white;
+  }
+
+
+.movie-result{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex: 1;
+  color: white;
+  background-color: black;
+  padding: 50px;
+  width: 75vw;
+  height: 10vw;
+  max-width: 800px;
+  margin: 10px 20px 30px 20px;
+  border-radius: 10px;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.result-btns{
+  display: flex;
+  flex-wrap: wrap;
+  justify-self:end;
+  gap: 15px;
+}
+
+#watchlist-link{
+font-size: 1.5em;
+}
+
+.movie-info{
+  display: flex;
+  align-items: center;
+  align-content: start;
+}
+
+.movie-info h3, .movie-info p{
+font-size: 1.5em;
+}
+
+.btn{
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: black;
+}
+
+.poster-wrapper {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  min-width: 200px;
+  height: 290px;
+  max-width: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.poster[src*="error-icon"] {
+  object-fit: contain;
+  padding: 20px;
+}
+
+.movie-details{
+  display: flex;
+  padding: 30px;
+  background-color: black;
+  color: white;
+  align-items: center;
+  max-width: 950px;
+  gap: 30px;
+  margin: 100px 20px 0px 20px;
+  border-radius: 10px;
+}
+
+.movie-details-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.movie-details-info span {
+font-weight: 700;
+}
+
+.movie {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  align-self: center;
+  border: none;
+  background-color: transparent;
+}
+
+.btn:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+  background-color: rgb(110, 110, 110);
+}
+
+ .light header > *, 
+ .light li > *, 
+ .light header,
+ .light .search > input,
+ .light .movie-result,
+ .light .movie-details,
+ .light .userlist-page h1,
+ .light .hero h1
+ {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.poster-wrapper{
+  border: 3px solid var(--bg)
+}
+
+.light .btn,
+  .light .search > button
+{
+  background-color: rgb(28, 28, 28);
+  color: rgb(252, 254, 255);
+}
+ .userlist-page h1{
+  padding: 15px;
+  margin-bottom: 10px;
+  font-size: 2.5em;
+  background-color: black;
+  color: white;
+  border: 5px solid white;
+ }
+
+.light .search input,
+.light .movie-result,
+.light .movie-details,
+.light .userlist-page h1,
+.light .hero h1,
+.poster
+{
+  border: 5px solid rgb(28, 28, 28);
+
+}
+
+.theme-btn{
+  font-size: 1em;
+  border-radius: 2px;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  header h1{
+    font-size: 2.4em;
+  }
+
+  #watchlist-link{
+   font-size: 1.3em;
+ }
+
+  li:last-of-type{
+    font-size: 1.3em;
+  }
+
+  .poster-wrapper{
+  min-width: 150px;
+}
+
+  .btn{
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+.movie-result{
+      padding: 25px;
+}
+    .movie-info > p,
+    .movie-info > h3
+    {
+        font-size: 1em;
+    }
+
+
+     .movie-details{
+  justify-content: center;
+  align-items: center;
+ }
+
+  .movie-info > p,
+  .movie-info > h3,
+  .movie-details-info p
+
+  {
+      font-size: 1em;
+  }
+
+}
+
+@media (max-width: 600px) {
+  li{
+    font-size: 1.2em;
+  }
+
+  header{
+    min-height: 80px;
+  }
+
+  #watchlist-link{
+    font-size: 1em;
+  }
+
+  .poster-wrapper{
+    width: 120px;
+    height: 190px;
+  }
+
+ .movie-result{
+  display:flex;
+  flex-wrap: wrap;
+  min-height: 200px;
+  opacity: 0;
+  transform: translateY(10px);
+ }
+
+.result-btns {
+  gap: 10px;
+  align-content: center;
+ }
+
+
+  .movie-details-info h2
+  {
+      font-size: 1.2em;
+  }
+
+    .movie-details{
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+  }
+
+
+}
+
+@media (max-width: 490px){
+  header h1{
+    font-size: 1.5em;
+  }
+
+  nav li{
+    font-size: 1.2em;
+  }
+
+  .poster-wrapper{
+    max-height: 180px;
+  }
+
+  .hero h1{
+    font-size: 2.5em;
+  }
+
+  .userlist-page h1{
+   font-size: 2.4em ;
+}
+
+  .result-btns{
+    text-align: left;
+    justify-self: flex-start;
+  }
+}
