@@ -3,6 +3,7 @@ import { createContext } from 'react'
 import Layout from './components/Layout.jsx'
 import Watchlist from './components/Watchlist.jsx'
 import Home from './components/Home.jsx'
+import Signup from './components/Signup.jsx'
 import { Route, RouterProvider, Routes } from 'react-router-dom'
 import './index.css'
 import MovieDetails from './MovieDetails.jsx'
@@ -22,6 +23,7 @@ function App() {
     <Routes>
      <Route path='/' element={<Layout />}>
      <Route index element={<Home />}/>
+     <Route path='signup' element={<Signup/>}/>
      <Route path='watchlist' element={<Watchlist />}/>
      <Route path='watchlist/:id' element={<MovieDetails />}/>
      <Route path='watchlist/userList' element={<UserWatchlist />}/>
