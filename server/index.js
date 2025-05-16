@@ -82,7 +82,6 @@ const authenticateToken = (req, res, next) => {
   }
 };
 
-
 app.get('/watchlist', authenticateToken, async (req, res) => {
   const username = req.username;
   
@@ -91,14 +90,12 @@ app.get('/watchlist', authenticateToken, async (req, res) => {
     if(!user) {
         res.status(404).json({msg: 'User not found'})
     }
-    const watchlist = user.watchlist || [];
+    const watchlist = Array.isArray(user.watchlist) ? user.watchlist : [];
     res.json(watchlist);
  }catch (err) {
     res.status(500).json({ msg: 'Server error' });
   } 
 });
-
-
 
   app.get('/', (req, res) => {
     res.send('API is running')
