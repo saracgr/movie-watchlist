@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { createContext } from 'react'
+import { Route, RouterProvider, Routes } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
-import Watchlist from './components/Watchlist.jsx'
+import SearchPage  from './components/SearchPage.jsx'
 import Home from './components/Home.jsx'
 import Signup from './components/Signup.jsx'
-import { Route, RouterProvider, Routes } from 'react-router-dom'
+import Login from './components/Login.jsx'
 import './index.css'
 import MovieDetails from './MovieDetails.jsx'
 import UserWatchlist from './components/UserWatchlist.jsx'
+
 export const themeContext = createContext()
 
 function App() {
@@ -24,9 +26,10 @@ function App() {
      <Route path='/' element={<Layout />}>
      <Route index element={<Home />}/>
      <Route path='signup' element={<Signup/>}/>
-     <Route path='watchlist' element={<Watchlist />}/>
-     <Route path='watchlist/:id' element={<MovieDetails />}/>
-     <Route path='watchlist/userList' element={<UserWatchlist />}/>
+    <Route path='login' element={<Login/>}/>
+     <Route path='search' element={<SearchPage />}/>
+     <Route path='search/:movieId' element={<MovieDetails />}/>
+     <Route path='watchlist/:username' element={<UserWatchlist />}/>
      </Route>
     </Routes>
     </div>

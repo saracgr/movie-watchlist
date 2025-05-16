@@ -6,46 +6,44 @@ import { Link } from 'react-router-dom';
 
 export default function UserWatchlist(){
     const [movies, setMovies] = useState([])
-    const [watchlist, setWatchlist] = useState(() => {
-      try {
-        const stored = localStorage.getItem("watchlist");
-        return stored ? JSON.parse(stored) : [];
-      } catch (err) {
-        console.error("Invalid watchlist data in localStorage:", err);
-        localStorage.removeItem("watchlist"); // optional cleanup
-        return [];
-      }
-    });
+   
 
 useEffect(() => {
-     if(watchlist.length === 0){
-        setMovies([])
-        return;
-     }
-           const fetchMovies = async () => {            
-                try{
-                const responses = await Promise.all(watchlist.map(id => 
-                     fetch(`http://www.omdbapi.com/?apikey=1293da37&i=${id}`)
-                     .then(res => res.json()) 
-                  ))
-                  const validMovies = responses.filter(movie => movie.Response === 'True')
-                  setMovies(validMovies)
-                }            
+      const fetchWatchlist = async () => {
+      try {
+        const res = await fetch('http://localhost:3001/userwatchlist', {
+          credentials: 'include',
+        });
+        const watchlist = await res.json()
+        const responses = await Promise.all(
+          watchlist.map(id =>
+            fetch(`http://www.omdbapi.com/?apikey=1293da37&i=${id}`)
+            .then(res => res.json())
+          )
+        );
+        const validMovies = responses.filter(movie => movie.Response === 'True');
+        setMovies(validMovies)
+      } catch (err) {
+        console.error("Error fetching watchlist:", err);
+        alert("Could not load your watchlist.");
+        return [];
+      }
+    };
+      fetchWatchlist()
+  },[])
 
-                catch(error){
-                  console.error('Fetch error:', error);
-                  alert('Something went wrong');              
-                }
-           };
-           fetchMovies()
-        },[watchlist])
-
-    function removeMovie(id){
-        setWatchlist((prevItems) => {
-         const updated = prevItems.filter((movieId) => movieId !== id)
-          localStorage.setItem('watchlist', JSON.stringify(updated))
-          return updated
-        })
+   async function removeMovie(id){
+        try{
+          const res = await fetch(`http://localhost:3001/userwatchlist/${id}`, {
+            method: 'DELETE',
+            credentials: 'include'
+          });
+          if(!res.ok) throw new Error('Delete has failed')
+          setMovies(movies => movies.filter(m => m.imdbID !== id))
+        }catch(err){
+          console.error('Error removing:', err)
+          alert('Failed to remove movie.');
+        }
   }
 
 return(
@@ -72,7 +70,7 @@ return(
           </div>
           <div className='result-btns'>
             <button className='btn' onClick={() => removeMovie(movie.imdbID)}><CiBookmarkRemove/></button>
-            <Link className="btn" to={`/watchlist/${movie.imdbID}`}><FaArrowRight/></Link>
+            <Link className="btn" to={`/search/${movie.imdbID}`}><FaArrowRight/></Link>
           </div>
       </div>
 )))}

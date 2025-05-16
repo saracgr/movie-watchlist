@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser'
 import userModel from './models/User.js'
+import bcrypt from 'bcrypt'
 
 dotenv.config()
 
@@ -20,20 +21,47 @@ const connectMongoDB = async () => {
     try{
         await mongoose.connect(process.env.MONGO_URI);
         console.log('MongoDB sucessfully connectec')
-    }catch(err){
+    }
+    catch(err){
         console.error('MongoDB connection error:', err.message);
         process.exit(1)
-
     }
 };
 
 connectMongoDB();
 
-app.post('/register', (req, res) => {
+app.post('/signup', async (req, res) => {
+     const {username, password} = req.body
+    try{
+        const existingUser = await userModel.findOne({username})
+        if(existingUser){
+            return res.status(400).json({msg: 'Username already exists'})
+     }
+     const hashedPassword = await bcrypt.hash(password, 10);
+        const user = await userModel.create({username, password: hashedPassword})
+    res.json(user)
+    }catch(err){
+        res.json(err)
+    } 
+})
+
+app.post('/login', async (req, res) => {
     const {username, password} = req.body
-    userModel.create({username, password})
-    .then(user => res.json(user))
-    .catch(err => res.json(err))
+    try{
+     if(!password){
+        return res.status(401).json({msg: 'Invalid credentials'});
+     }
+     const token = jwt.sign({ username },process.env.JWT_SECRET, {expiresIn: '2h'} )
+     res.cookie('token', token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'Lax',
+        maxAge: 3600000
+     });
+     res.json({ msg: 'Loged in sucessfully'})
+    }catch(err){
+        res.json(err)
+    }
 })
 
 
@@ -42,11 +70,7 @@ app.post('/register', (req, res) => {
     res.send('API is running')
   }) 
 
- 
-
-
 const PORT = process.env.PORT || 3001
-
 
 app.listen(PORT, () => {
     console.log('Server is running')

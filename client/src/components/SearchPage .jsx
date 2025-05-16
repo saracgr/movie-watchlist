@@ -6,30 +6,22 @@ import { BiError } from "react-icons/bi";
 import { FaArrowRight } from "react-icons/fa";
 import { WiDayCloudy } from "react-icons/wi";
 
-export default function MovieDetails(){
+export default function SearchPage (){
     const [input, setInput] = useState('') 
     const [movie, setMovie] = useState(null) 
-    const [watchlist, setWatchlist] = useState(() => {
-      try {
-        const stored = localStorage.getItem("watchlist");
-        return stored ? JSON.parse(stored) : [];
-      } catch (err) {
-        console.error("Invalid watchlist data in localStorage:", err);
-        localStorage.removeItem("watchlist"); 
-        return [];
-      }
-    });
+    const [watchlist, setWatchlist] = useState([]);
+   
 
-    async function fetchMovieList(input){
+    async function fetchMovieList(query){
         try{
-          const res = await fetch(`http://www.omdbapi.com/?apikey=1293da37&s=${input}&type=movie`)
+          const res = await fetch(`http://www.omdbapi.com/?apikey=1293da37&s=${query}&type=movie`)
           const data = await res.json() 
              
           if(data.Response === 'True'){
-            console.log(data.Search)
                 setMovie(data.Search)
                }else{
                 alert('Movie not found')
+                setMovie([])
                }
                setInput('');
             }catch(error){
@@ -38,10 +30,21 @@ export default function MovieDetails(){
                 }
             }
 
-        function addToWatchlist(movieId){
-            setWatchlist(prevItems => 
-              prevItems.includes(movieId) ? prevItems : [...prevItems,movieId]
-            );         
+        const addToWatchlist = async (movieId) =>{
+            try{
+              const res = await fetch('http//:localhost:3001/userwatchlist',{
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ movieId })
+                });
+              setWatchlist(prev => (prev.includes(movieId) ? prev : [...prev, movieId]));
+            }catch(err){
+                console.error(err);
+                alert('Please log in to add movies to your watchlist.');
+            }      
          }
          
          useEffect(()=>{
@@ -82,7 +85,7 @@ export default function MovieDetails(){
             <h3>{movie.Title} ({movie.Year})</h3>
         </div>
         <div className="result-btns">
-        <Link className="btn" to={`/watchlist/${movie.imdbID}`}><FaArrowRight/></Link>
+        <Link className="btn" to={`/search/${movie.imdbID}`}><FaArrowRight/></Link>
         <button className="btn" onClick={() => addToWatchlist(movie.imdbID)}><MdBookmarkAdd /></button>
         </div>
     </div>
