@@ -7,17 +7,16 @@ import { Link } from 'react-router-dom';
 export default function UserWatchlist(){
     const [movies, setMovies] = useState([])
    
-
 useEffect(() => {
       const fetchWatchlist = async () => {
       try {
-        const res = await fetch('https://movie-watchlist-wwt5.onrender.com/userwatchlist', {
+        const res = await fetch('https://movie-watchlist-wwt5.onrender.com/watchlist', {
           credentials: 'include',
         });
         const watchlist = await res.json()
         const responses = await Promise.all(
           watchlist.map(id =>
-            fetch(`http://www.omdbapi.com/?apikey=1293da37&i=${id}`)
+            fetch(`https://www.omdbapi.com/?apikey=1293da37&i=${id}`)
             .then(res => res.json())
           )
         );
@@ -34,7 +33,7 @@ useEffect(() => {
 
    async function removeMovie(id){
         try{
-          const res = await fetch(`https://movie-watchlist-wwt5.onrender.com/userwatchlist/${id}`, {
+          const res = await fetch(`https://movie-watchlist-wwt5.onrender.com/watchlist/${id}`, {
             method: 'DELETE',
             credentials: 'include'
           });

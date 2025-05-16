@@ -69,6 +69,35 @@ app.post('/login', async (req, res) => {
     }
 })
 
+const authenticateToken = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) return res.status(401).json({ msg: 'No token, authorization denied' });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.username = decoded.username; // pass username to request
+    next();
+  } catch (err) {
+    res.status(401).json({ msg: 'Token is not valid' });
+  }
+};
+
+
+app.get('/watchlist', authenticateToken, async (req, res) => {
+  const username = req.username;
+  
+ try{
+    const user = await userModel.findOne({ username });
+    if(!user) {
+        res.status(404).json({msg: 'User not found'})
+    }
+    const watchlist = user.watchlist || [];
+    res.json(watchlist);
+ }catch (err) {
+    res.status(500).json({ msg: 'Server error' });
+  } 
+});
+
 
 
   app.get('/', (req, res) => {

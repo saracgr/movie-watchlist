@@ -17,12 +17,11 @@ export default function Login(){
                     'https://movie-watchlist-wwt5.onrender.com/login',
                     {username, password},
                     { withCredentials: true }
-                ).then(res => {
-                    navigate(`/watchlist/${username}`)
-                })
-        
+                    
+                )
                 setUsername('');
-                setPassword('');                
+                setPassword('');
+                navigate(`/watchlist`)           
             }catch(err){
               setMsg(err.response?.data?.msg || "Something went wrong");
             }

@@ -29,7 +29,7 @@ function App() {
      <Route path='login' element={<Login/>}/>
      <Route path='search' element={<SearchPage />}/>
      <Route path='search/:movieId' element={<MovieDetails />}/>
-     <Route path='watchlist/:username' element={<UserWatchlist />}/>
+     <Route path='watchlist' element={<UserWatchlist />}/>
      </Route>
     </Routes>
     </div>

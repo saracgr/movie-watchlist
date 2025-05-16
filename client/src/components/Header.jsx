@@ -8,7 +8,6 @@ import { themeContext } from '../App';
 
 const Header = () => {
     const {theme, toggleTheme} = useContext(themeContext);
-
     return (
         <header>
         <h1>Movie Search</h1>
@@ -21,7 +20,7 @@ const Header = () => {
             )}
             </button></li>
             <li><Link to='/search'><BsSearchHeart/></Link></li>
-            <li id="watchlist-link"><Link to='/watchlist/:username'>WATCHLIST</Link></li>
+            <li id="watchlist-link"><Link to='watchlist'>WATCHLIST</Link></li>
         </nav>
         </header>
     )
