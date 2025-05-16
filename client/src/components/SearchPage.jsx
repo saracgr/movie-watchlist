@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, createContext } from "react"
-import { Link, navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { MdBookmarkAdd } from "react-icons/md";
 import { BiError } from "react-icons/bi";
@@ -10,7 +10,7 @@ export default function SearchPage (){
     const [input, setInput] = useState('') 
     const [movie, setMovie] = useState(null) 
     const [watchlist, setWatchlist] = useState([]);
-   
+   const navigate = useNavigate()
 
     async function fetchMovieList(query){
         try{
