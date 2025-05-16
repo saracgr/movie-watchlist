@@ -49,6 +49,7 @@ return (
                 value={password}  
                 onChange={(e) => setPassword(e.target.value)}
                 />
+                <button type='submit'>Log In</button>
             </form>
             {msg && <p className="message">{msg}</p>}
         </div>

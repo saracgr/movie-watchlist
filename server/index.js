@@ -13,7 +13,7 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: 'https://the-moviewatchlist.netlify.app/',
+    origin: ['https://the-moviewatchlist.netlify.app', 'http://localhost:5174'],
     credentials: true
 }))
 
@@ -48,9 +48,14 @@ app.post('/signup', async (req, res) => {
 app.post('/login', async (req, res) => {
     const {username, password} = req.body
     try{
-     if(!password){
-        return res.status(401).json({msg: 'Invalid credentials'});
-     }
+        const user = await userModel.findOne({ username });
+    if (!user) {
+      return res.status(401).json({ msg: 'Invalid credentials' });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ msg: 'Invalid credentials' });
+    }
      const token = jwt.sign({ username },process.env.JWT_SECRET, {expiresIn: '2h'} )
      res.cookie('token', token, {
         httpOnly: true,

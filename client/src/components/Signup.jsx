@@ -77,6 +77,7 @@ return (
                 value={confirmPass}  
                 onChange={(e) => setConfirmPass(e.target.value)}
                 />
+                <button type="submit">Sign Up</button>
             </form>
             {msg && <p className="message">{msg}</p>}
         </div>
