@@ -14,7 +14,7 @@ export default function SearchPage (){
 
     async function fetchMovieList(query){
         try{
-          const res = await fetch(`http://www.omdbapi.com/?apikey=1293da37&s=${query}&type=movie`)
+          const res = await fetch(`https://www.omdbapi.com/?apikey=1293da37&s=${query}&type=movie`)
           const data = await res.json() 
              
           if(data.Response === 'True'){
