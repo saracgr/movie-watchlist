@@ -32,7 +32,7 @@ export default function SearchPage (){
 
         const addToWatchlist = async (movieId) =>{
             try{
-              const res = await fetch('http//:localhost:3001/userwatchlist',{
+              const res = await fetch('https://movie-watchlist-wwt5.onrender.com/userwatchlist',{
                 method: 'POST',
                 credentials: 'include',
                 headers: {

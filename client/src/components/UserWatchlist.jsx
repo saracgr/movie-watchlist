@@ -11,7 +11,7 @@ export default function UserWatchlist(){
 useEffect(() => {
       const fetchWatchlist = async () => {
       try {
-        const res = await fetch('http://localhost:3001/userwatchlist', {
+        const res = await fetch('https://movie-watchlist-wwt5.onrender.com/userwatchlist', {
           credentials: 'include',
         });
         const watchlist = await res.json()
@@ -34,7 +34,7 @@ useEffect(() => {
 
    async function removeMovie(id){
         try{
-          const res = await fetch(`http://localhost:3001/userwatchlist/${id}`, {
+          const res = await fetch(`https://movie-watchlist-wwt5.onrender.com/userwatchlist/${id}`, {
             method: 'DELETE',
             credentials: 'include'
           });

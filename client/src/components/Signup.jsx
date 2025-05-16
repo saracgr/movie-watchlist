@@ -33,7 +33,7 @@ export default function SignUp(){
        
               try {
                 const res = await axios.post(
-                    'http://localhost:3001/signup',
+                    'https://movie-watchlist-wwt5.onrender.com/signup',
                     {username, password},
                     { withCredentials: true }
                 ).then(res => {
