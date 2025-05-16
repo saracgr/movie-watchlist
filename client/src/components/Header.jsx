@@ -20,8 +20,8 @@ const Header = () => {
             <FiSun/>
             )}
             </button></li>
-            <li><Link to='/watchlist'><BsSearchHeart/></Link></li>
-            <li id="watchlist-link"><Link to='/watchlist/userList'>WATCHLIST</Link></li>
+            <li><Link to='/search'><BsSearchHeart/></Link></li>
+            <li id="watchlist-link"><Link to='/watchlist/:username'>WATCHLIST</Link></li>
         </nav>
         </header>
     )
