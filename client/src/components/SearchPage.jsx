@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, createContext } from "react"
-import { Link } from "react-router-dom";
+import { Link, navigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { MdBookmarkAdd } from "react-icons/md";
 import { BiError } from "react-icons/bi";
@@ -32,7 +32,7 @@ export default function SearchPage (){
 
         const addToWatchlist = async (movieId) =>{
             try{
-              const res = await fetch('https://movie-watchlist-wwt5.onrender.com/userwatchlist',{
+              const res = await fetch('https://movie-watchlist-wwt5.onrender.com/watchlist',{
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -44,6 +44,7 @@ export default function SearchPage (){
             }catch(err){
                 console.error(err);
                 alert('Please log in to add movies to your watchlist.');
+                navigate('/login')
             }      
          }
          
