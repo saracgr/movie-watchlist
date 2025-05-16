@@ -13,7 +13,7 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: 'https://movie-watchlist-wwt5.onrender.com',
+    origin: 'https://the-moviewatchlist.netlify.app/',
     credentials: true
 }))
 
