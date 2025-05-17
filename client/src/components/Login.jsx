@@ -38,9 +38,9 @@ return (
                 value={username}  
                 onChange={(e) => setUsername(e.target.value)}
                 />
-                  <label htmlFor='user'>Password</label>
+                  <label htmlFor='password'>Password</label>
                 <input 
-                id='user'
+                id='password'
                 placeholder="Password"
                 type='password'
                 value={password}  
