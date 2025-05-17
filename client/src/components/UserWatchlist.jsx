@@ -33,7 +33,7 @@ useEffect(() => {
 
    async function removeMovie(id){
         try{
-          const res = await fetch(`https://movie-watchlist-wwt5.onrender.com/watchlist/${id}`, {
+          const res = await fetch(`https://movie-watchlist-wwt5.onrender.com/watchlist`, {
             method: 'DELETE',
             credentials: 'include'
           });

@@ -20,6 +20,7 @@ const Header = () => {
             )}
             </button></li>
             <li><Link to='/search'><BsSearchHeart/></Link></li>
+             <li id="watchlist-link"><Link to='login'>LOG IN</Link></li>
             <li id="watchlist-link"><Link to='watchlist'>WATCHLIST</Link></li>
         </nav>
         </header>
