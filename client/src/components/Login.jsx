@@ -15,8 +15,9 @@ export default function Login(){
                     await axios.post(
                     'https://movie-watchlist-wwt5.onrender.com/login',
                     {username, password},
-                    { withCredentials: true }                   
+                    { withCredentials: true }         
                 )
+                console.log('Login successful:', res.data);
                 setUsername('');
                 setPassword('');
                 navigate(`/watchlist`)           
