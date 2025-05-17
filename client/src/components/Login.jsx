@@ -30,7 +30,7 @@ return (
     <div className='login-container'>
         <div className="login">
             <h2>Log In</h2>
-            <form method='POST' onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <label htmlFor='user'>UserName</label>
                 <input 
                 id='user'

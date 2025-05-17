@@ -13,8 +13,10 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: ['https://the-moviewatchlist.netlify.app', 'http://localhost:5174'],
-    credentials: true
+    origin: 'https://the-moviewatchlist.netlify.app',
+    methods: ['GET','POST','DELETE','OPTIONS'],
+    credentials: true,
+      allowedHeaders: ['Content-Type','Authorization']
 }))
 
 const connectMongoDB = async () => {
