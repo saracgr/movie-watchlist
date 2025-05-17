@@ -11,13 +11,11 @@ export default function Login(){
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-       
               try {
-                const res = await axios.post(
+                    await axios.post(
                     'https://movie-watchlist-wwt5.onrender.com/login',
                     {username, password},
-                    { withCredentials: true }
-                    
+                    { withCredentials: true }                   
                 )
                 setUsername('');
                 setPassword('');
