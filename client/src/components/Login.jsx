@@ -27,10 +27,10 @@ export default function Login(){
 }
 
 return (
-    <div className='login-container'>
-        <div className="login">
-            <h2>Log In</h2>
-            <form onSubmit={handleSubmit}>
+    <div className='login-container min-h-[100vh] flex justify-center items-center text-white'>
+        <div className="login max-w-[90vh] bg-red-600 min-h-[70vh] rounded-[10px]">
+            <h2 className="">Log In</h2>
+            <form className="form bg-black p-16 border border-white p-16" onSubmit={handleSubmit}>
               <label htmlFor='user'>UserName</label>
                 <input 
                 id='user'
@@ -47,7 +47,7 @@ return (
                 value={password}  
                 onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type='submit'>Log In</button>
+                <button type='submit' className="bg-gray-600 text-white">Submit</button>
             </form>
             {msg && <p className="message">{msg}</p>}
         </div>
