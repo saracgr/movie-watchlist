@@ -10,7 +10,7 @@
             async function fetchMovieList(){
                 setMovie(null)
                 try{
-                  const res = await fetch(`http://www.omdbapi.com/?apikey=1293da37&i=${movieId}`)
+                  const res = await fetch(`https://www.omdbapi.com/?apikey=1293da37&i=${movieId}`)
                   const data = await res.json() 
                      
                   if(data.Response === 'True'){
