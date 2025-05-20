@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { logInContext } from "../App";
+import { useContext } from "react";
 
 export default function Login(){
     const [username, setUsername] = useState('')
@@ -8,6 +10,10 @@ export default function Login(){
     const [msg, setMsg] = useState('')
     const [isLogged, setIsLogged] = useState(false)
     const navigate = useNavigate()
+    
+    const {logInUser, setLogInUser} = useContext(logInContext)
+    
+    console.log(logInUser)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -19,6 +25,7 @@ export default function Login(){
                 )
 
                 if(res.status === 200){
+                  setLogInUser({username, password})
                   setIsLogged(true)
                 }
                 console.log('Login successful:', res.data);
@@ -60,7 +67,7 @@ return (
                 <button type='submit' className="red-700 rounded-10 mt-5 font-bold">SUBMIT</button>
             </form>
              </>
-           ): <p>{username}, you have sucessfuly logged in!</p>}
+           ): <p>{logInUser.username}, you have sucessfuly logged in!</p>}
         </div>
     </div>
 )

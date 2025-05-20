@@ -9,22 +9,27 @@ import Login from './components/Login.jsx'
 import './index.css'
 import MovieDetails from './MovieDetails.jsx'
 import UserWatchlist from './components/UserWatchlist.jsx'
+import { useContext } from 'react'
 
 export const themeContext = createContext()
+export const logInContext = createContext()
 
 function App() {
   const [theme, setTheme] = useState('dark')
-
+  const [logInUser, setLogInUser] = useState(null)
   const toggleTheme = () => {
     setTheme((prev) => prev === 'light' ? 'dark' : 'light')
   }
 
   return (
+
     <themeContext.Provider value={{theme, toggleTheme}}>
+     <logInContext.Provider value={{logInUser, setLogInUser}}>
       <div className={theme}>
     <Routes>
      <Route path='/' element={<Layout />}>
      <Route index element={<Home />}/>
+     
      <Route path='signup' element={<Signup/>}/>
      <Route path='login' element={<Login/>}/>
      <Route path='search' element={<SearchPage />}/>
@@ -33,6 +38,7 @@ function App() {
      </Route>
     </Routes>
     </div>
+     </logInContext.Provider>
     </themeContext.Provider>
   )
 }

@@ -1,10 +1,11 @@
     import { useEffect, useState } from "react" 
-    import { useParams, Link } from "react-router-dom"
+    import { useParams, Link, useNavigate } from "react-router-dom"
     import { FaArrowLeft } from "react-icons/fa";
 
     export default function MovieDetails(){
-        const [movie, setMovie] = useState(null) 
+        const [movie, setMovie] = useState(null);
         let { movieId } = useParams();
+        const navigate = useNavigate();
 
         useEffect(() => {
             async function fetchMovieList(){
@@ -46,7 +47,7 @@
                 <p>{movie.Plot}</p>
                 <p><span>Genre:</span> {movie.Genre}</p>
             </div>
-            <Link className="btn" to={-1}><FaArrowLeft/></Link>
+            <button className="btn" onClick={() => navigate(-1)}><FaArrowLeft/></button>
         </div>
          )}   
       </div>
