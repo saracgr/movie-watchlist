@@ -27,7 +27,7 @@
                     }
                 }
                fetchMovieList()
-        },[id])            
+        },[movieId])            
                         
       return(
       <div className="search-page">
