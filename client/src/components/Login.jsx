@@ -6,17 +6,23 @@ export default function Login(){
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [msg, setMsg] = useState('')
+    const [loginState, setLoginState] = useState('')
+    const [isLogged, setIsLogged] = useState(false)
     const navigate = useNavigate()
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
               try {
-                    await axios.post(
+                    const res = await axios.post(
                     'https://movie-watchlist-wwt5.onrender.com/login',
                     {username, password},
                     { withCredentials: true }         
                 )
+
+                if(res.status === 200){
+                  setIsLogged(true)
+                }
                 console.log('Login successful:', res.data);
                 setUsername('');
                 setPassword('');
@@ -27,29 +33,36 @@ export default function Login(){
 }
 
 return (
-    <div className='login-container min-h-[100vh] flex justify-center items-center text-white'>
-        <div className="login max-w-[90vh] bg-red-600 min-h-[70vh] rounded-[10px]">
-            <h2 className="">Log In</h2>
-            <form className="form bg-black p-16 border border-white p-16" onSubmit={handleSubmit}>
-              <label htmlFor='user'>UserName</label>
+    <div className='login-container flex justify-center items-center text-white'>
+        <div className="login bg-black min-w-[70vh] m-20 rounded-[10px]">
+            <h2 className="text-center mt-3 font-bold">Log In</h2>
+           {!isLogged ? (
+            <>
+            <form className="form bg-white text-gray-800 p-10 mt-3 min-h-[55vh] rounded-b-[10px]" onSubmit={handleSubmit}>
+              <label htmlFor='user' className="py-2 font-bold">UserName</label>
                 <input 
                 id='user'
+                className="bg-gray-200 p-2"
                 placeholder="Username"
                 type='text'
                 value={username}  
                 onChange={(e) => setUsername(e.target.value)}
                 />
-                  <label htmlFor='password'>Password</label>
+                  <label htmlFor='password' className="py-2 font-bold">Password</label>
                 <input 
                 id='password'
+                className="bg-gray-200 p-2"
                 placeholder="Password"
                 type='password'
                 value={password}  
                 onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type='submit' className="bg-gray-600 text-white">Submit</button>
+                 {msg && <p className="message mt-5">{msg}</p>}
+
+                <button type='submit' className="red-700 rounded-10 mt-5 font-bold">SUBMIT</button>
             </form>
-            {msg && <p className="message">{msg}</p>}
+             </>
+           ): <p>{username}, you have sucessfuly logged in!</p>}
         </div>
     </div>
 )
