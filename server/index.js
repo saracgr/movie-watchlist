@@ -65,10 +65,20 @@ app.post('/login', async (req, res) => {
         sameSite: 'None',
         maxAge: 3600000
      });
-     res.json({ msg: 'Loged in sucessfully'})
+     res.json({ msg: 'Loged in sucessfully', token})
     }catch(err){
         res.json(err)
     }
+})
+
+
+app.post('/logout', async (req, res) => {
+    res.clearCookie('token',{
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None'
+    });
+    res.status(200).json({msg: 'Logged out' })
 })
 
 const authenticateToken = (req, res, next) => {
