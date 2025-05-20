@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { createContext } from 'react'
-import { Route, RouterProvider, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import SearchPage from './components/SearchPage.jsx'
 import Home from './components/Home.jsx'
