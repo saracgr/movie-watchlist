@@ -24,10 +24,9 @@ export default function Login(){
                     { withCredentials: true }         
                 )
 
-                if(res.status === 200){
-                  setLogInUser({username, password})
-                  setIsLogged(true)
-                }
+              
+                setLogInUser({username, password})
+                setIsLogged(true)
                 console.log('Login successful:', res.data);
                 setUsername('');
                 setPassword('');
@@ -41,7 +40,7 @@ return (
     <div className='login-container flex justify-center items-center text-white'>
         <div className="login bg-black min-w-[70vh] m-20 rounded-[10px]">
             <h2 className="text-center mt-3 font-bold">Log In</h2>
-           {!isLogged ? (
+           {!isLogged && !logInUser ? (
             <>
             <form className="form bg-white text-gray-800 p-10 mt-3 min-h-[55vh] rounded-b-[10px]" onSubmit={handleSubmit}>
               <label htmlFor='user' className="py-2 font-bold">UserName</label>
