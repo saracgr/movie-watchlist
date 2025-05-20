@@ -15,11 +15,30 @@ export const themeContext = createContext()
 export const logInContext = createContext()
 
 function App() {
+  const [logInUser, setLogInUser] = useState(() => {
+    const storedUser = localStorage.getItem('user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });  
+
+  useEffect(() => {
+    if (logInUser) {
+      localStorage.setItem('user', JSON.stringify(logInUser));
+    } else {
+      localStorage.removeItem('user');
+    }
+  }, [logInUser]);
+  
   const [theme, setTheme] = useState('dark')
-  const [logInUser, setLogInUser] = useState(null)
   const toggleTheme = () => {
     setTheme((prev) => prev === 'light' ? 'dark' : 'light')
   }
+
+  useEffect(() => {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    setLogInUser(JSON.parse(storedUser));
+  }
+}, []);
 
   return (
 
