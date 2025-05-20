@@ -4,13 +4,13 @@
 
     export default function MovieDetails(){
         const [movie, setMovie] = useState(null) 
-        let { moieId } = useParams();
+        let { movieId } = useParams();
 
         useEffect(() => {
             async function fetchMovieList(){
                 setMovie(null)
                 try{
-                  const res = await fetch(`http://www.omdbapi.com/?apikey=1293da37&i=${moieId}`)
+                  const res = await fetch(`http://www.omdbapi.com/?apikey=1293da37&i=${movieId}`)
                   const data = await res.json() 
                      
                   if(data.Response === 'True'){

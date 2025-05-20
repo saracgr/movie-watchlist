@@ -6,10 +6,8 @@ export default function Login(){
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [msg, setMsg] = useState('')
-    const [loginState, setLoginState] = useState('')
     const [isLogged, setIsLogged] = useState(false)
     const navigate = useNavigate()
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
