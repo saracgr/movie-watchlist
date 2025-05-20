@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { createContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
@@ -9,7 +9,6 @@ import Login from './components/Login.jsx'
 import './index.css'
 import MovieDetails from './MovieDetails.jsx'
 import UserWatchlist from './components/UserWatchlist.jsx'
-import { useContext } from 'react'
 
 export const themeContext = createContext()
 export const logInContext = createContext()
