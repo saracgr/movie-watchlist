@@ -16,7 +16,7 @@ app.use(cors({
     origin: 'https://the-moviewatchlist.netlify.app',
     methods: ['GET','POST','DELETE','OPTIONS'],
     credentials: true,
-      allowedHeaders: ['Content-Type','Authorization']
+    allowedHeaders: ['Content-Type','Authorization']
 }))
 
 const connectMongoDB = async () => {
@@ -31,8 +31,6 @@ const connectMongoDB = async () => {
 };
 
 connectMongoDB();
-
-app.options('*', cors());
 
 app.post('/signup', async (req, res) => {
      const {username, password} = req.body
