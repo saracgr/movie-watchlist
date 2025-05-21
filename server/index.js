@@ -71,7 +71,6 @@ app.post('/login', async (req, res) => {
     }
 })
 
-
 app.post('/logout', async (req, res) => {
     res.clearCookie('token',{
         httpOnly: true,

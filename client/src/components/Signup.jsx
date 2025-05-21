@@ -49,37 +49,40 @@ export default function SignUp(){
 }
 
 return (
-    <div className='registration-container'>
-        <div className="register">
-            <h2>Sign Up</h2>
-            <form method='POST' onSubmit={handleSubmit}>
-              <label htmlFor='user'>UserName</label>
+    <div className='registration-container flex justify-center items-center min-h-[80vh]'>
+        <div className="register  bg-white min-h-[60vh] min-w-[70vh] rounded-t-[10px]">
+            <h2 className="text-center bg-black p-3 text-white font-bold rounded-t-[10px]">Sign Up</h2>
+            <form className="bg-white text-gray-800 p-10 flex flex-col" onSubmit={handleSubmit}>
+              <label htmlFor='user' className="py-2 font-bold">UserName</label>
                 <input 
                 id='user'
+                className="bg-gray-200 p-2 rounded-md w-full"
                 placeholder="Username"
                 type='text'
                 value={username}  
                 onChange={(e) => setUsername(e.target.value)}
                 />
-                  <label htmlFor='user'>Password</label>
+                <label htmlFor='password' className="py-2 font-bold">Password</label>
                 <input 
-                id='user'
+                id='password'
+                className="bg-gray-200 p-2 rounded-md w-full"
                 placeholder="Password"
                 type='password'
                 value={password}  
                 onChange={(e) => setPassword(e.target.value)}
                 />
-                  <label htmlFor='user'>Password Confirmation</label>
+                  <label htmlFor='confirmPass' className="py-2 font-bold">Password Confirmation</label>
                 <input 
-                id='user'
+                id='confirmPass'
+                className="bg-gray-200 p-2 rounded-md w-full"
                 placeholder="Confirm your password"
                 type='password'
                 value={confirmPass}  
                 onChange={(e) => setConfirmPass(e.target.value)}
                 />
-                <button type="submit">Sign Up</button>
+                 {msg && <p className="message text-center text-red-500 mt-3">{msg}</p>}
+                <button type="submit" className="bg-black text-white p-3 rounded-md mt-8">Sign Up</button>
             </form>
-            {msg && <p className="message">{msg}</p>}
         </div>
     </div>
 )

@@ -1,14 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { FaArrowRight } from 'react-icons/fa';
 import { CiBookmarkRemove } from "react-icons/ci";
 import { LuFolderHeart } from "react-icons/lu";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { logInContext } from '../App';
 
 export default function UserWatchlist(){
     const [movies, setMovies] = useState([])
-    
+    const { logInUser } = useContext(logInContext)
+
 useEffect(() => {
       const fetchWatchlist = async () => {
+          if(!logInUser){
+          return
+        }
       try {
         const res = await fetch('https://movie-watchlist-wwt5.onrender.com/watchlist', {
           credentials: 'include',
@@ -47,8 +52,13 @@ useEffect(() => {
 
 return(
 <div className='userlist-page'>
-  <h1>your watchlist <LuFolderHeart/></h1>
-  {movies.length === 0 ? (
+  {logInUser && logInUser.name ? (
+  <><h1>{logInUser.name}'s watchlist</h1><LuFolderHeart/></>
+  ) : (
+  <h1>Log in first to start saving </h1>  
+  )}
+
+  {movies.length === 0 && logInUser ? (
       <h1>No movies in your watchlist :/</h1>
   ) : (
   movies.map(movie => (
