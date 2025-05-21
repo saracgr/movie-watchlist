@@ -32,6 +32,8 @@ const connectMongoDB = async () => {
 
 connectMongoDB();
 
+app.options('*', cors());
+
 app.post('/signup', async (req, res) => {
      const {username, password} = req.body
     try{
