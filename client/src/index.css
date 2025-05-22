@@ -67,10 +67,6 @@ main{
   flex-direction: column;
 }
 
-.userlist-page{
-  margin: 40px 20px 20px 20px;
-}
-
 .search{
   margin: 50px 0 25px 0;
   color: white;
