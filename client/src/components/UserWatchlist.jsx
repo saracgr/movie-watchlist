@@ -67,7 +67,7 @@ return(
   <h1>Log in first to start saving </h1>  
   )}
 
-  {movies.length === 0 && logInUser && 
+  {!isloading && movies.length === 0 && logInUser && 
     <h1>No movies in your watchlist :/</h1>
   }
   {isloading ? (
