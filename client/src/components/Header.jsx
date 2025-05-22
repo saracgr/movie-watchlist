@@ -13,6 +13,12 @@ const Header = () => {
         setToggle(prev => !prev)
     }
 
+    if(toggle){
+        setTimeout(() => {
+        setToggle(false)
+        },3000)
+    }
+
     return (
         <header className="relative flex justify-between items-center gap-5 p-5 bg-black text-white border-b-4 border-black">
             <h1>Movie Search</h1>

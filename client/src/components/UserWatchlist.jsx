@@ -60,7 +60,7 @@ useEffect(() => {
   }
 
 return(
-<div className='userlist-page flex flex-col items-center'>
+<div className='userlist-page flex flex-col '>
   {logInUser && logInUser.username ? (
     <h1 className='text-center'>{logInUser.username}'s watchlist<LuFolderHeart/></h1>
   ) : (
@@ -74,8 +74,8 @@ return(
   <h1>Movie watchlist loading...</h1>
   ):( 
   movies.map(movie => (
-      <div key={movie.imdbID} className='movie-result'>
-          <div className="movie">
+      <div key={movie.imdbID} className='movie-result movie-result w-full max-w-4xl mx-auto flex justify-between items-center gap-6 '>
+          <div className="movie flex items-center gap-4 flex-1">
               <div className="poster-wrapper">
                 <img className="poster" 
                 src={movie.Poster}
@@ -84,12 +84,12 @@ return(
                   e.currentTarget.src = 'https://www.freeiconspng.com/uploads/error-icon-7.png';
                 }}
                 alt="Movie Poster"/>
-              </div>
               <div className="movie-info">
                   <h3>{movie.Title} ({movie.Year})</h3>
               </div>
+              </div>
           </div>
-          <div className='result-btns'>
+          <div className='result-btns result-btns flex gap-4 justify-end'>
             <button className='btn' onClick={() => removeMovie(movie.imdbID)}><CiBookmarkRemove/></button>
             <Link className="btn" to={`/search/${movie.imdbID}`}><FaArrowRight/></Link>
           </div>

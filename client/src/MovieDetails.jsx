@@ -31,9 +31,9 @@
         },[movieId])            
                         
       return(
-      <div className="search-page">
+      <div className="search-page w-full px-4 py-10 flex justify-center">
         {movie && (
-        <div className='movie-details'>
+        <div className='movie-details w-full max-w-4xl flex flex-col md:flex-row items-center gap-6 rounded-lg shadow-md p-6'>
             <div className="poster-wrapper">
             <img className="poster" src={movie.Poster} 
              onError={(e) => { 
