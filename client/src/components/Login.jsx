@@ -47,8 +47,8 @@ return (
         <div className="login flex flex-col flex-1 max-w-[600px] bg-white min-h-[60vh] mt-10 rounded-[10px]">
           <h2 className="text-center bg-black py-3 font-bold rounded-t-[10px]">LOG IN</h2>
           {logInUser?.username ? (
-              <div className="bg-white rounded-b-[10px] text-black text-center mt-[12vh] p-10">
-                <p>Hi <span className="font-bold">{logInUser.username}</span>, you have successfully logged in!</p>
+              <div className="bg-white rounded-b-[10px] text-black text-center mt-[12vh]">
+                <p className="p-10">Hi <span className="font-bold">{logInUser.username}</span>, you have successfully logged in!</p>
                 <button onClick={logOut} className="bg-black text-white p-3 rounded-md mt-10">Log Out</button>
               </div>
             ) : (
