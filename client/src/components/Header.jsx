@@ -7,7 +7,7 @@ import { themeContext } from '../App';
 
 const Header = () => {
     const {theme, toggleTheme} = useContext(themeContext);
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
 
     const toggleMenu = () => {
         setToggle(prev => !prev)
@@ -16,7 +16,7 @@ const Header = () => {
     if(toggle){
         setTimeout(() => {
         setToggle(false)
-        },3000)
+        },2000)
     }
 
     return (

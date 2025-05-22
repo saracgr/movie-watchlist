@@ -43,8 +43,8 @@ const logOut = async () =>{
 }
 
 return (
-    <div className='login-container flex justify-center items-center text-white'>
-        <div className="login flex flex-col flex-1 max-w-[500px] bg-white min-h-[60vh]  m-20 mt-10 rounded-[10px]">
+    <div className='login-container flex justify-center items-center text-white m-15'>
+        <div className="login flex flex-col flex-1 max-w-[600px] bg-white min-h-[60vh] mt-10 rounded-[10px]">
           <h2 className="text-center bg-black py-3 font-bold rounded-t-[10px]">LOG IN</h2>
           {logInUser?.username ? (
               <div className="bg-white rounded-b-[10px] text-black text-center mt-[12vh]">

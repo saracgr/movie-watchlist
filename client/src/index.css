@@ -307,6 +307,10 @@ button {
 }
 
 @media (max-width: 600px) {
+  header{
+    min-height: 80px;
+  }
+  
   header h1{
     font-size: 1.3em;
   }
@@ -325,9 +329,11 @@ button {
     gap: 15px;
    }
 
-  header{
-    min-height: 80px;
-  }
+   .login, .signup
+   {
+    max-width: 400px;
+   }
+}
 
   /*theme + menu header buttons*/
   header button,
@@ -372,7 +378,7 @@ button {
   .userlist-page h1{
     font-size: 1.8em;
   }
-}
+
 
 @media (max-width: 490px){
   header h1{
@@ -422,4 +428,8 @@ button {
   .movie-details{
   margin: 30px 20px 0px 20px;
 }
+
+.login, .signup{
+    max-width: 300px;
+   }
 }

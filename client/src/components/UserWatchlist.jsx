@@ -60,7 +60,7 @@ useEffect(() => {
   }
 
 return(
-<div className='userlist-page flex flex-col items-center p-15'>
+<div className='userlist-page flex flex-col items-center p-20'>
   {logInUser && logInUser.username ? (
     <h1 className='text-center'>{logInUser.username}'s watchlist<LuFolderHeart className='text-center'/></h1>
   ) : (
@@ -73,27 +73,28 @@ return(
   {isloading ? (
   <h1>Movie watchlist loading...</h1>
   ):( 
-  movies.map(movie => (
-      <div key={movie.imdbID} className='movie-result movie-result w-full max-w-4xl mx-auto flex justify-between items-center gap-6 '>
-          <div className="movie flex items-center gap-10 flex-1">
-              <div className="poster-wrapper">
-                <img className="poster" 
-                src={movie.Poster}
-                 onError={(e) => { 
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = 'https://www.freeiconspng.com/uploads/error-icon-7.png';
-                }}
-                alt="Movie Poster"/>
-              </div>
-               <div className="movie-info">
-                  <h3>{movie.Title} ({movie.Year})</h3>
-              </div>
-          </div>
-          <div className='result-btns result-btns flex gap-4 justify-end'>
-            <button className='btn' onClick={() => removeMovie(movie.imdbID)}><CiBookmarkRemove/></button>
-            <Link className="btn" to={`/search/${movie.imdbID}`}><FaArrowRight/></Link>
-          </div>
+movie && movie.map((movie) => (
+  <div key={movie.imdbID} className='movie-result w-full max-w-4xl mx-auto flex justify-between items-center gap-6 py-4 border-b border-gray-200'>
+    <div className="movie flex items-center gap-10 flex-1">
+      <div className="poster-wrapper w-[80px] min-w-[80px] h-[120px] overflow-hidden">
+        <img className="poster w-full h-full object-cover" 
+          src={movie.Poster}
+          onError={(e) => { 
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = 'https://www.freeiconspng.com/uploads/error-icon-7.png';
+          }}
+          alt="Movie Poster"
+        />
       </div>
+      <div className="movie-info flex-1 break-words">
+        <h3>{movie.Title} ({movie.Year})</h3>
+      </div>
+    </div>
+    <div className='result-btns flex gap-4 justify-end'>
+      <Link className="btn" to={`/search/${movie.imdbID}`}><FaArrowRight/></Link>
+      <button className="btn" onClick={() => addToWatchlist(movie.imdbID)}><MdBookmarkAdd /></button>
+    </div>
+  </div>
 )))}
 </div>
 )

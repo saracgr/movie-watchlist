@@ -52,7 +52,7 @@ export default function SearchPage (){
          }
          
   return(
-  <div className="search-page flex flex-col items-center m-20">
+  <div className="search-page w-full px-4 py-10 flex flex-col justify-center">
     <div className="search flex items-center self-center gap-[5px]">
     <input
     placeholder="movie name"
@@ -69,10 +69,8 @@ export default function SearchPage (){
     </input>
     <button type="submit" onClick={() => fetchMovieList(input)}><FaSearch/></button>
     </div>
-   
     {movie && movie.map((movie) => (
-    <div key={movie.imdbID} className='movie-result movie-result w-full max-w-4xl mx-auto flex justify-between items-center gap-6'>
-      <div className="flex items-center gap-4 flex-1">
+      <div key={movie.imdbID} className="movie-result w-full max-w-4xl flex flex-col md:flex-row items-start gap-6 rounded-lg shadow-md p-6">      
         <div className="poster-wrapper">
           <img className="poster" 
           src={movie.Poster}
@@ -85,13 +83,12 @@ export default function SearchPage (){
         <div className="movie-info">
             <h3>{movie.Title} ({movie.Year})</h3>
         </div> 
-        </div>   
         <div className="result-btns flex gap-4 justify-end">
         <Link className="btn" to={`/search/${movie.imdbID}`}><FaArrowRight/></Link>
         <button className="btn" onClick={() => addToWatchlist(movie.imdbID)}><MdBookmarkAdd /></button>
         </div>
     </div>
-     ))}   
-  </div>
+     ))}  
+  </div> 
   )
 }
