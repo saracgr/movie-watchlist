@@ -27,7 +27,8 @@ useEffect(() => {
             .then(res => res.json())
           )
         );
-        const validMovies = responses.filter(movie => movie.Response === 'True');
+        const validMovies = responses.filter(movi
+          e => movie.Response === 'True');
         setMovies(validMovies)
         setIsLoading(false)
       } catch (err) {
@@ -92,7 +93,7 @@ movie && movie.map((movie) => (
     </div>
     <div className='result-btns flex gap-4 justify-end'>
       <Link className="btn" to={`/search/${movie.imdbID}`}><FaArrowRight/></Link>
-      <button className="btn" onClick={() => addToWatchlist(movie.imdbID)}><MdBookmarkAdd /></button>
+      <button className="btn" onClick={() => removeMovie(movie.imdbID)}><CiBookmarkRemove /></button>
     </div>
   </div>
 )))}
