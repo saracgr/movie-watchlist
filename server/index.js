@@ -108,7 +108,6 @@ app.get('/watchlist', authenticateToken, async (req, res) => {
   } 
 });
 
-
 app.post('/watchlist', authenticateToken, async (req, res) => {
   const username = req.username;
   const { movieId } = req.body;
@@ -124,7 +123,6 @@ app.post('/watchlist', authenticateToken, async (req, res) => {
       return res.status(404).json({ msg: 'User not found' });
     }
 
-    // Prevent duplicates
     if (!user.watchlist.includes(movieId)) {
       user.watchlist.push(movieId);
       await user.save();
@@ -136,6 +134,31 @@ app.post('/watchlist', authenticateToken, async (req, res) => {
     res.status(500).json({ msg: 'Server error' });
   }
 });
+
+app.delete('watchlist', authenticateToken, async (req, res) => {
+  const username = req.username
+  const { movieId } = req.body
+
+    if(!movieId){
+      return res.status(400).json({ msg: 'movieId is required' });
+    }
+
+    try {
+        const user = await userModel.findOne({ username });
+
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+
+    user.watchlist = user.watchlist.filter((id) => id !== movieId);
+    await user.save();
+
+    res.json({ msg: 'Movie removed from watchlist' });
+  }catch(err){
+      console.error('Error removing movie:', err);
+      res.status(500).json({ msg: 'Server error' });
+  }
+})
 
   app.get('/', (req, res) => {
     res.send('API is running')

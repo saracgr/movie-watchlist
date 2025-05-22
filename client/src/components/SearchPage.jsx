@@ -1,16 +1,15 @@
-import { useEffect, useState, useContext, createContext } from "react"
+import { useEffect, useState, useContext, } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { MdBookmarkAdd } from "react-icons/md";
-import { BiError } from "react-icons/bi";
 import { FaArrowRight } from "react-icons/fa";
-import { WiDayCloudy } from "react-icons/wi";
+import { logInContext } from "../App";
 
 export default function SearchPage (){
     const [input, setInput] = useState('') 
     const [movie, setMovie] = useState(null) 
-    const [watchlist, setWatchlist] = useState([]);
-   const navigate = useNavigate()
+    const navigate = useNavigate()
+    const {logInUser} = useContext(logInContext)
 
     async function fetchMovieList(query){
         try{
@@ -31,6 +30,11 @@ export default function SearchPage (){
             }
 
         const addToWatchlist = async (movieId) =>{
+              if (!logInUser) {
+              alert('Please log in to add movies to your watchlist.');
+              navigate('/login');
+              return;
+            }
             try{
               const res = await fetch('https://movie-watchlist-wwt5.onrender.com/watchlist',{
                 method: 'POST',
@@ -40,17 +44,12 @@ export default function SearchPage (){
                 },
                 body: JSON.stringify({ movieId })
                 });
-              setWatchlist(prev => (prev.includes(movieId) ? prev : [...prev, movieId]));
             }catch(err){
                 console.error(err);
                 alert('Please log in to add movies to your watchlist.');
                 navigate('/login')
             }      
          }
-         
-         useEffect(()=>{
-        localStorage.setItem( 'watchlist',JSON.stringify((watchlist)))
-         },[watchlist])
           
          
   return(
