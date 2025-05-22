@@ -55,7 +55,8 @@ export default function SearchPage (){
   <div className="search-page flex flex-col items-center m-20">
     <div className="search flex items-center self-center gap-[5px]">
     <input
-    placeholder="movie name" 
+    placeholder="movie name"
+    className="w-[250px] sm:w-[300px] md:w-[400px] max-w-full" 
     id="movie" 
     value={input}  
     onChange={(e) => setInput(e.target.value)}
