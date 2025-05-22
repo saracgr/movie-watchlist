@@ -433,3 +433,22 @@ button {
     max-width: 300px;
    }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .desktop-hover:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .light .desktop-hover:hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  a:hover {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+}

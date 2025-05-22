@@ -13,12 +13,6 @@ const Header = () => {
         setToggle(prev => !prev)
     }
 
-    if(toggle){
-        setTimeout(() => {
-        setToggle(false)
-        },2000)
-    }
-
     return (
         <header className="relative flex justify-between items-center gap-5 p-5 bg-black text-white border-b-4 border-black">
             <h1>Movie Search</h1>
@@ -27,22 +21,22 @@ const Header = () => {
                     {theme === "light" ? <MdDarkMode /> : <FiSun />}
                 </button>
                 <nav className="relative">
-                    <button className="w-40 h-12 rounded-md font-bold hover:bg-gray-300 transition" onClick={toggleMenu}><HiMenu /></button>
+                    <button className="w-40 h-12 rounded-md font-bold desktop-hover  transition" onClick={toggleMenu}><HiMenu /></button>
                     <ul
                 className={`absolute top-full right-0 mt-2 w-40 rounded-md bg-white border border-white overflow-hidden transition-all duration-300 ease-in-out
-                ${toggle ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}`}
+                ${toggle ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
                 >
                 <li>
-                    <Link to='/' className="block py-3 px-4 hover:bg-white hover:text-black transition">HOME</Link>
+                    <Link to='/' className="block py-3 px-4 desktop-hover transition" onClick={() => setToggle(false)}>HOME</Link>
                 </li>
                 <li>
-                    <Link to='/search' className="block py-3 px-4 hover:bg-white hover:text-black transition">SEARCH</Link>
+                    <Link to='/search' className="block py-3 px-4 desktop-hover transition" onClick={() => setToggle(false)}>SEARCH</Link>
                 </li>
                 <li>
-                    <Link to='/login' className="block py-3 px-4 hover:bg-white hover:text-black transition">LOG IN</Link>
+                    <Link to='/login' className="block py-3 px-4 desktop-hover transition" onClick={() => setToggle(false)}>LOG IN</Link>
                 </li>
                 <li>
-                    <Link to='/watchlist' className="block py-3 px-4 hover:bg-white hover:text-black transition">WATCHLIST</Link>
+                    <Link to='/watchlist' className="block py-3 px-4 desktop-hover transition" onClick={() => setToggle(false)}>WATCHLIST</Link>
                 </li>
                 </ul>
                 </nav>
