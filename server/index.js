@@ -80,10 +80,6 @@ app.post('/logout', async (req, res) => {
     res.status(200).json({msg: 'Logged out' })
 })
 
-app.get('/auth', authenticateToken, (req, res) => {
-  res.json({ loggedIn: true, username: req.username })
-})
-
 const authenticateToken = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) return res.status(401).json({ msg: 'No token, authorization denied' });
@@ -96,6 +92,10 @@ const authenticateToken = (req, res, next) => {
     res.status(401).json({ msg: 'Token is not valid' });
   }
 };
+
+app.get('/auth', authenticateToken, (req, res) => {
+  res.json({ loggedIn: true, username: req.username })
+})
 
 app.get('/watchlist', authenticateToken, async (req, res) => {
   const username = req.username;
