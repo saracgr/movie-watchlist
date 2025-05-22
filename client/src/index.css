@@ -173,6 +173,11 @@ font-size: 1.5em;
 font-weight: 700;
 }
 
+.movie {
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 button {
   align-self: center;
   border: none;
@@ -309,6 +314,12 @@ button {
   .hero h1{
     font-size: 1.6em;
   }
+
+   .movie {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+   }
 
   header{
     min-height: 80px;
