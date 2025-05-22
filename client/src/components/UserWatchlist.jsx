@@ -27,8 +27,7 @@ useEffect(() => {
             .then(res => res.json())
           )
         );
-        const validMovies = responses.filter(movi
-          e => movie.Response === 'True');
+        const validMovies = responses.filter(movie => movie.Response === 'True');
         setMovies(validMovies)
         setIsLoading(false)
       } catch (err) {
@@ -74,7 +73,7 @@ return(
   {isloading ? (
   <h1>Movie watchlist loading...</h1>
   ):( 
-movie && movie.map((movie) => (
+movies && movies.map((movie) => (
   <div key={movie.imdbID} className='movie-result w-full max-w-4xl mx-auto flex justify-between items-center gap-6 py-4 border-b border-gray-200'>
     <div className="movie flex items-center gap-10 flex-1">
       <div className="poster-wrapper w-[80px] min-w-[80px] h-[120px] overflow-hidden">
