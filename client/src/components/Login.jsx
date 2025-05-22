@@ -46,7 +46,7 @@ const logOut = async () =>{
 
 return (
     <div className='login-container flex justify-center items-center text-white'>
-        <div className="login bg-white min-w-[70vh] min-h-[50vh] m-20 rounded-[10px]">
+        <div className="login bg-white min-h-[60vh] min-w-[70vh] m-20 mt-10 rounded-[10px]">
           <h2 className="text-center bg-black py-3 font-bold rounded-t-[10px]">LOG IN</h2>
           {logInUser?.username ? (
               <div className="bg-white rounded-b-[10px] text-black text-center mt-[12vh]">
@@ -54,7 +54,7 @@ return (
                 <button onClick={logOut} className="bg-black text-white p-3 rounded-md mt-10">Log Out</button>
               </div>
             ) : (
-              <form className="form bg-white text-gray-800 p-10 rounded-b-[10px]" onSubmit={handleSubmit}>
+              <form className="form flex flex-col bg-white text-gray-800 p-10 rounded-b-[10px]" onSubmit={handleSubmit}>
                 <label htmlFor='user' className="py-2 font-bold">UserName</label>
                 <input 
                 id='user'

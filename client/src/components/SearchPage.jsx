@@ -50,11 +50,10 @@ export default function SearchPage (){
                 navigate('/login')
             }      
          }
-          
          
   return(
-  <div className="search-page">
-    <div className="search">
+  <div className="search-page flex flex-1 flex-col items-center m-20">
+    <div className="search flex items-center gap-[5px]">
     <input
     placeholder="movie name" 
     id="movie" 

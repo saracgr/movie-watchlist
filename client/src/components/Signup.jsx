@@ -49,10 +49,10 @@ export default function SignUp(){
 }
 
 return (
-    <div className='registration-container flex justify-center items-center min-h-[80vh]'>
-        <div className="register  bg-white min-h-[60vh] min-w-[70vh] rounded-t-[10px]">
+    <div className='flex justify-center items-center min-h-[80vh]'>
+        <div className="sign-up bg-white min-h-[60vh] min-w-[70vh] rounded-[10px] m-20 mt-10">
             <h2 className="text-center bg-black p-3 text-white font-bold rounded-t-[10px]">Sign Up</h2>
-            <form className="bg-white text-gray-800 p-10 flex flex-col" onSubmit={handleSubmit}>
+            <form className="bg-white text-gray-800 p-10 flex flex-col rounded-b-[10px]" onSubmit={handleSubmit}>
               <label htmlFor='user' className="py-2 font-bold">UserName</label>
                 <input 
                 id='user'

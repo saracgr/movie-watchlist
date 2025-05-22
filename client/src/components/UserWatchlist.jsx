@@ -60,11 +60,11 @@ useEffect(() => {
   }
 
 return(
-<div className='userlist-page'>
+<div className='userlist-page flex flex-col items-center'>
   {logInUser && logInUser.username ? (
-    <h1>{logInUser.username}'s watchlist<LuFolderHeart/></h1>
+    <h1 className='text-center'>{logInUser.username}'s watchlist<LuFolderHeart/></h1>
   ) : (
-  <h1>Log in first to start saving </h1>  
+  <h1 className='text-center'>Log in first to start saving </h1>  
   )}
 
   {!isloading && movies.length === 0 && logInUser && 
