@@ -24,8 +24,7 @@ const Header = () => {
                     <button className="w-40 h-12 rounded-md font-bold desktop-hover  transition" onClick={toggleMenu}><HiMenu /></button>
                     <ul
                 className={`absolute top-full right-0 mt-2 w-40 rounded-md bg-white border border-white overflow-hidden transition-all duration-300 ease-in-out
-                ${toggle ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
-                >
+                ${toggle ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}`}                >
                 <li>
                     <Link to='/' className="block py-3 px-4 desktop-hover transition" onClick={() => setToggle(false)}>HOME</Link>
                 </li>
