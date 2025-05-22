@@ -135,7 +135,7 @@ app.post('/watchlist', authenticateToken, async (req, res) => {
   }
 });
 
-app.delete('watchlist', authenticateToken, async (req, res) => {
+app.delete('/watchlist', authenticateToken, async (req, res) => {
   const username = req.username
   const { movieId } = req.body
 
