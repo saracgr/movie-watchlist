@@ -52,8 +52,8 @@ useEffect(() => {
 
 return(
 <div className='userlist-page'>
-  {logInUser && logInUser.name ? (
-  <><h1>{logInUser.name}'s watchlist</h1><LuFolderHeart/></>
+  {logInUser && logInUser.username ? (
+  <><h1>{logInUser.username}'s watchlist</h1><LuFolderHeart/></>
   ) : (
   <h1>Log in first to start saving </h1>  
   )}
