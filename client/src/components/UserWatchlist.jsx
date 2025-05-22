@@ -60,7 +60,7 @@ useEffect(() => {
   }
 
 return(
-<div className='userlist-page flex flex-col items-center p-20'>
+<div className='userlist-page flex flex-col items-center p-15'>
   {logInUser && logInUser.username ? (
     <h1 className='text-center'>{logInUser.username}'s watchlist<LuFolderHeart className='text-center'/></h1>
   ) : (
