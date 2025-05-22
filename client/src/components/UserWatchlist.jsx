@@ -60,7 +60,7 @@ useEffect(() => {
   }
 
 return(
-<div className='userlist-page flex flex-col items-center p-20'>
+<div className='userlist-page w-full px-4 py-10 flex flex-col justify-center'>
   {logInUser && logInUser.username ? (
     <h1 className='text-center'>{logInUser.username}'s watchlist<LuFolderHeart className='text-center'/></h1>
   ) : (
@@ -74,10 +74,10 @@ return(
   <h1>Movie watchlist loading...</h1>
   ):( 
 movies && movies.map((movie) => (
-  <div key={movie.imdbID} className='movie-result w-full max-w-4xl mx-auto flex justify-between items-center gap-6 py-4 border-b border-gray-200'>
+  <div key={movie.imdbID} className='movie-result w-full max-w-4xl flex flex-col md:flex-row items-start gap-6 rounded-lg p-6'>
     <div className="movie flex items-center gap-10 flex-1">
-      <div className="poster-wrapper w-[80px] min-w-[80px] h-[120px] overflow-hidden">
-        <img className="poster w-full h-full object-cover" 
+      <div className="poster-wrapper">
+        <img className="poster" 
           src={movie.Poster}
           onError={(e) => { 
             e.currentTarget.onerror = null;
