@@ -60,9 +60,9 @@ useEffect(() => {
   }
 
 return(
-<div className='userlist-page flex flex-col '>
+<div className='userlist-page flex flex-col items-center p-20'>
   {logInUser && logInUser.username ? (
-    <h1 className='text-center'>{logInUser.username}'s watchlist<LuFolderHeart/></h1>
+    <h1 className='text-center'>{logInUser.username}'s watchlist<LuFolderHeart className='text-center'/></h1>
   ) : (
   <h1 className='text-center'>Log in first to start saving </h1>  
   )}
