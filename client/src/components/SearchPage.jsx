@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, } from "react"
+import {useState, useContext, } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { MdBookmarkAdd } from "react-icons/md";

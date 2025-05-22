@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { FaArrowRight } from 'react-icons/fa';
 import { CiBookmarkRemove } from "react-icons/ci";
 import { LuFolderHeart } from "react-icons/lu";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logInContext } from '../App';
 
 export default function UserWatchlist(){

@@ -14,30 +14,28 @@ export const themeContext = createContext()
 export const logInContext = createContext()
 
 function App() {
-  const [logInUser, setLogInUser] = useState(() => {
-    const storedUser = localStorage.getItem('user');
-    return storedUser ? JSON.parse(storedUser) : null;
-  });  
+  const [logInUser, setLogInUser] = useState(null)
 
   useEffect(() => {
-    if (logInUser) {
-      localStorage.setItem('user', JSON.stringify(logInUser));
-    } else {
-      localStorage.removeItem('user');
+    const checkLogin = async () => {
+      try{
+          const res = await axios.get('https://movie-watchlist-wwt5.onrender.com/auth', {
+          withCredentials: true,
+        })
+          if(res.data.loggedIn) {
+            setLogInUser({ username: res.data.username })
+          }
+      }catch(err){
+        setLogInUser(null);
+      }
     }
-  }, [logInUser]);
+      checkLogin()
+  }, []);
   
   const [theme, setTheme] = useState('dark')
   const toggleTheme = () => {
     setTheme((prev) => prev === 'light' ? 'dark' : 'light')
   }
-
-  useEffect(() => {
-  const storedUser = localStorage.getItem('user');
-  if (storedUser) {
-    setLogInUser(JSON.parse(storedUser));
-  }
-}, []);
 
   return (
 

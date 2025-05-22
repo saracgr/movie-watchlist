@@ -20,7 +20,6 @@ export default function Login(){
                     { withCredentials: true }         
                 )      
                 setLogInUser({username})
-                localStorage.setItem('user', JSON.stringify({ username }));
                 setIsLogged(true)
                 console.log('Login successful:', res.data);
                 setUsername('');
@@ -37,7 +36,6 @@ const logOut = async () =>{
         withCredentials: true
       });
         setLogInUser(null)
-        localStorage.removeItem('user')
         navigate('/')
       }catch(err){
         console.error('Logout has failed', err)
