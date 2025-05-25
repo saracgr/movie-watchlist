@@ -52,7 +52,7 @@ export default function SearchPage (){
          }
          
   return(
-  <div className="search-page w-full px-4 py-10 flex flex-col justify-center">
+  <div className="search-page w-full px-4 py-10 flex flex-col justify-center items-center">
     <div className="search flex items-center self-center gap-[5px]">
     <input
     placeholder="movie name"
