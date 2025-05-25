@@ -74,27 +74,27 @@ return(
   <h1>Movie watchlist loading...</h1>
   ):( 
 movies && movies.map((movie) => (
-  <div key={movie.imdbID} className='movie-result w-full max-w-4xl flex flex-col md:flex-row items-start gap-6 rounded-lg p-6'>
-    <div className="movie flex items-center gap-10 flex-1">
-      <div className="poster-wrapper">
-        <img className="poster" 
-          src={movie.Poster}
-          onError={(e) => { 
-            e.currentTarget.onerror = null;
-            e.currentTarget.src = 'https://www.freeiconspng.com/uploads/error-icon-7.png';
-          }}
-          alt="Movie Poster"
-        />
-      </div>
-      <div className="movie-info flex-1 break-words">
-        <h3>{movie.Title} ({movie.Year})</h3>
-      </div>
+  <div key={movie.imdbID} className='movie-result w-full max-w-4xl flex flex-col md:flex-row items-center justify-between gap-6 rounded-lg p-6'>
+    <div className="flex flex-col gap-6 p-5">
+          <div className="poster-wrapper">
+              <img className="poster" 
+                src={movie.Poster}
+                onError={(e) => { 
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = 'https://www.freeiconspng.com/uploads/error-icon-7.png';
+                }}
+                alt="Movie Poster"
+              />
+          </div>
+          <div className="movie-info flex-1 break-words">
+              <h3>{movie.Title} ({movie.Year})</h3>
+          </div>
     </div>
     <div className='result-btns flex gap-4 justify-end'>
-      <Link className="btn" to={`/search/${movie.imdbID}`}><FaArrowRight/></Link>
-      <button className="btn" onClick={() => removeMovie(movie.imdbID)}><CiBookmarkRemove /></button>
+        <Link className="btn" to={`/search/${movie.imdbID}`}><FaArrowRight/></Link>
+        <button className="btn" onClick={() => removeMovie(movie.imdbID)}><CiBookmarkRemove /></button>
     </div>
-  </div>
+</div>
 )))}
 </div>
 )
