@@ -70,8 +70,8 @@ export default function SearchPage (){
     <button type="submit" onClick={() => fetchMovieList(input)}><FaSearch/></button>
     </div>
     {movie && movie.map((movie) => (
-      <div key={movie.imdbID} className="movie-result w-full max-w-4xl flex flex-col md:flex-row items-center justify-between gap-6 rounded-lg py-[10px]">
-        <div className="flex flex-col gap-6 p-5">    
+      <div key={movie.imdbID} className="movie-result w-full max-w-4xl flex items-center justify-between gap-6 rounded-lg p-10">
+        <div className="flex flex-col gap-6">    
           <div className="poster-wrapper">
             <img className="poster" 
             src={movie.Poster}
