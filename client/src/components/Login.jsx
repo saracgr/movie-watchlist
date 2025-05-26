@@ -77,9 +77,13 @@ return (
                 onChange={(e) => setPassword(e.target.value)}
                 />
                  {msg && <p className="message mt-5 text-center">{msg}</p>}
-               <div className="flex justify-center gap-10">
-                  <button type='submit' className="bg-black text-white p-3 rounded-md mt-10">{isLoading ? <BeatLoader /> : "Submit"}</button>
-                  <button onClick={() => navigate('/signup')} className="bg-orange-500 text-white p-3 rounded-md mt-10">Sign Up</button>
+               <div className="flex justify-center gap-10 mt-10">
+                {isLoading ? <BeatLoader /> : (
+                  <>
+                  <button type='submit' className="bg-black text-white p-3 rounded-md">Submit</button>
+                  <button onClick={() => navigate('/signup')} className="bg-orange-500 text-white p-3 rounded-md">Sign Up</button>
+                  </>
+                )}
                </div>
             </form>
            )}
