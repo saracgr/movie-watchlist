@@ -3,16 +3,20 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { logInContext } from "../App";
 import { useContext } from "react";
+import BeatLoader from 'react-spinners'
 
 export default function Login(){
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [isLoading, setIsLoading] = useState(false) 
     const [msg, setMsg] = useState('')
+    
     const navigate = useNavigate()
     const {logInUser, setLogInUser} = useContext(logInContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setIsLoading(true)
               try {
                     const res = await axios.post(
                     'https://movie-watchlist-wwt5.onrender.com/login',
@@ -20,13 +24,14 @@ export default function Login(){
                     { withCredentials: true }         
                 )      
                 setLogInUser({username})
-                setIsLogged(true)
+                setIsLoading(false);
                 console.log('Login successful:', res.data);
                 setUsername('');
                 setPassword('');
                 navigate(`/watchlist`)           
             }catch(err){
               setMsg(err.response?.data?.msg || "Something went wrong");
+              setIsLoading(false);
             }
 }
 
@@ -73,7 +78,7 @@ return (
                 />
                  {msg && <p className="message mt-5 text-center">{msg}</p>}
                <div className="flex justify-center gap-10">
-                  <button type='submit' className="bg-black text-white p-3 rounded-md mt-10">Submit</button>
+                  <button type='submit' className="bg-black text-white p-3 rounded-md mt-10">{isLoading ? <BeatLoader /> : "Submit"}</button>
                   <button onClick={() => navigate('/signup')} className="bg-orange-500 text-white p-3 rounded-md mt-10">Sign Up</button>
                </div>
             </form>
