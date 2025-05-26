@@ -315,12 +315,6 @@ button {
     font-size: 1.6em;
   }
 
-   .movie {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-   }
-
    .login, .signup
    {
     max-width: 400px;
@@ -346,7 +340,6 @@ button {
 
  .movie-result{
   display:flex;
-  flex-wrap: wrap;
   opacity: 0;
   transform: translateY(10px);
  }
@@ -413,8 +406,7 @@ button {
   }
 
   .result-btns{
-    text-align: left;
-    justify-self: flex-start;
+    flex-direction: column;
   }
 
   .movie-details{
