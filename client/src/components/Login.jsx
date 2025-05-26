@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { logInContext } from "../App";
 import { useContext } from "react";
-import BeatLoader from 'react-spinners'
+import { BeatLoader } from 'react-spinners'
 
 export default function Login(){
     const [username, setUsername] = useState('')
