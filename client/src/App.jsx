@@ -7,7 +7,7 @@ import Home from './components/Home.jsx'
 import Signup from './components/Signup.jsx'
 import Login from './components/Login.jsx'
 import './index.css'
-import MovieDetails from './MovieDetails.jsx'
+import MovieDetails from './components/MovieDetails.jsx'
 import UserWatchlist from './components/UserWatchlist.jsx'
 
 export const themeContext = createContext()

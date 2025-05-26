@@ -87,7 +87,7 @@ movies && movies.map((movie) => (
               />
           </div>
           <div className="movie-info flex-1 break-words">
-              <h3>{movie.Title} ({movie.Year})</h3>
+              <h3 className='font-bold'>{movie.Title} ({movie.Year})</h3>
           </div>
     </div>
     <div className='result-btns flex gap-4 justify-end'>
